@@ -1,0 +1,174 @@
+@charset "UTF-8";
+/* Mixins are going next */
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=MonteCarlo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@500&family=Signika:wght@500;600&display=swap');
+* {
+  padding: 0;
+  margin: 0; }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+}
+
+:root {
+  --primary-color: #f3a153;
+  --secondary-color: #f7fff7;
+  --font-color: #424242;
+  --bg-color: white;
+  --heading-color: #292922;
+  --container-shadow: 30px 30px 60px #cf8947, -30px -30px 60px #ffb95f; }
+
+[data-theme="dark"] {
+  --primary-color: #646469;
+  --secondary-color: #a1a2a5;
+  --font-color: #fbfbfd;
+  --bg-color: #303038;
+  --heading-color: #818cab;
+  --container-shadow: 30px 30px 60px #292930,
+  -30px -30px 60px #373740; }
+
+body {
+  min-height: 100vh;
+  justify-content: center;
+  background: white;
+  font-family: "Caveat", cursive; }
+
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:white;
+    opacity: 1; /* Firefox */
+  }
+
+  h1{
+      color: white;
+      margin-left: 2%;
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      font-size: 50px;
+      font-family: 'Azeret Mono', monospace;
+  }
+  .form{
+      margin-left: 20%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 60%;
+      
+      background: rgb(30, 167, 62);
+     
+
+  }
+
+  
+
+  .container{
+      display: flex;
+      align-items: center;
+      border-bottom: black;
+      width: 100%;
+      height: 200px;
+      background-color: rgb(30, 167, 62);
+  }
+
+
+  .field{
+      border: none;
+      padding: 5px;
+      font-family: 'Signika', sans-serif;
+      background-color: rgb(30, 167, 62);
+  }
+  
+
+  #name-input{
+color:white;
+height: 50px;
+font-size: 40px;
+  }
+
+  #salary-input{
+      color: white;
+      font-size: 20px;
+  }
+
+  #company-input{
+      color:white;
+      font-size: 20px;
+  }
+
+  #description-input{
+      color:white;
+      font-size: 15px;
+  }
+
+  #add{
+      height: 130%;
+      width: 300px;
+      padding: 50px;
+      border: none;
+      border-radius: 20%;
+      background-color: rgb(199, 41, 88);
+      color: white;
+      font-size: 60px;
+  }
+
+  .name{
+      margin-top: 20px;
+      width: 50%;
+   margin-left: 20%;
+    color: rgb(199, 41, 88);
+    font-size: 60px;
+    font-family: 'Signika', sans-serif;
+    background: #fcfcfc;
+box-shadow:  20px 20px 60px #d6d6d6,
+              ;
+    
+    /* background-color: rgb(51, 186, 82); */
+  }
+
+  .salary{
+    width: 50%;
+    margin-left: 20%;
+    color: black;
+    font-size: 30px;
+    font-family: 'Signika', sans-serif;
+    background: #fcfcfc;
+box-shadow:  
+             -20px -20px 60px #ffffff;
+    /* background-color: rgb(51, 186, 82); */
+  }
+
+  .company{
+    width: 50%;
+    margin-left: 20%;
+    color: black;
+    font-size: 30px;
+    font-family: 'Signika', sans-serif;
+    background: #fcfcfc;
+box-shadow:  
+             -20px -20px 60px #ffffff;
+    /* background-color: rgb(51, 186, 82); */
+  }
+
+  .description{
+    width: 50%;
+    margin-left: 20%;
+    color: black;
+    font-size: 15px;
+    font-family: 'Signika', sans-serif;
+    background: #fcfcfc;
+box-shadow:  
+             -20px -20px 60px #ffffff;
+    /* background-color: rgb(51, 186, 82); */
+  }
+
+  .delete{
+      margin-left: 20%;
+      background-color: transparent;
+      border: none;
+      color: rgb(199, 41, 88);
+      font-family: 'Signika', sans-serif;
+  }
+  
