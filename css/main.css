@@ -124,9 +124,8 @@ font-size: 40px;
     color: rgb(199, 41, 88);
     font-size: 60px;
     font-family: 'Signika', sans-serif;
-    background: #fcfcfc;
-box-shadow:  20px 20px 60px #d6d6d6,
-              ;
+    
+              
     
     /* background-color: rgb(51, 186, 82); */
   }
@@ -139,9 +138,7 @@ box-shadow:  20px 20px 60px #d6d6d6,
     color: black;
     font-size: 30px;
     font-family: 'Signika', sans-serif;
-    background: #fcfcfc;
-box-shadow:  
-             -20px -20px 60px #ffffff;
+    
     /* background-color: rgb(51, 186, 82); */
   }
 
@@ -153,9 +150,7 @@ box-shadow:
     color: black;
     font-size: 30px;
     font-family: 'Signika', sans-serif;
-    background: #fcfcfc;
-box-shadow:  
-             -20px -20px 60px #ffffff;
+    
     /* background-color: rgb(51, 186, 82); */
   }
 
@@ -167,17 +162,44 @@ box-shadow:
     color: black;
     font-size: 15px;
     font-family: 'Signika', sans-serif;
-    background: #fcfcfc;
-box-shadow:  
-             -20px -20px 60px #ffffff;
+  
     /* background-color: rgb(51, 186, 82); */
   }
 
   .delete{
       margin-left: 20%;
+      width: 0%;
       background-color: transparent;
       border: none;
       color: rgb(199, 41, 88);
       font-family: 'Signika', sans-serif;
   }
+
+  .containerJob{
+    margin-top: 20px;
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+background: #fcfcfc;
+box-shadow:  20px 20px 60px #d6d6d6,
+             -20px -20px 0px #ffffff;
+  }
   
+  .edit{
+    height: 100%;
+    display: flex;
+    max-width: 50px;
+    margin-left: 90%;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+      background-color: transparent;
+      border: none;
+      color: rgb(199, 41, 88);
+      font-family: 'Signika', sans-serif;
+      font-size: 15px;
+  }

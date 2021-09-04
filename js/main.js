@@ -9,10 +9,7 @@ let companyInput = document.getElementById("company-input");
 let descriptionInput = document.getElementById("description-input");
 let salaryInput = document.getElementById("salary-input")
 
-{/* <input type="input" value="${item.name}" class="taskInput" id ="${item.id}" maxlength = "35"> */ }
-// myPara.setAttribute("id", "id_you_like");
-// var input = document.createElement("input");
-// input.type = "text";
+
 
 async function renderJobs() {
     const jobsData = await fetch("https://61293a58068adf001789b83c.mockapi.io/api/jobs");
@@ -20,14 +17,24 @@ async function renderJobs() {
     let jobs = await jobsData.json();
     jobs.forEach((job) => {
         let jobBlock1 = document.createElement("input");
-        let jobBlock2 = document.createElement("p");
-        let jobBlock3 = document.createElement("p");
-        let jobBlock4 = document.createElement("p");
+        let jobBlock2 = document.createElement("input");
+        let jobBlock3 = document.createElement("input");
+        let jobBlock4 = document.createElement("input");
+        let jobContainer = document.createElement("div");
+        jobContainer.setAttribute("id", job.id);
+        jobContainer.setAttribute("class", "containerJob")
         jobBlock1.classList.add('name');
         jobBlock2.classList.add('salary');
         jobBlock3.classList.add('company');
         jobBlock4.classList.add('description');
-        jobBlock1.setAttribute("id", job.title)
+        jobBlock1.classList.add('block');
+        jobBlock2.classList.add('block');
+        jobBlock3.classList.add('block');
+        jobBlock4.classList.add('block');
+        // jobBlock1.setAttribute("id", job.title)
+        // jobBlock2.setAttribute("id", job.companyName)
+        // jobBlock3.setAttribute("id", job.description)
+        // jobBlock4.setAttribute("id", job.salary)
 
 
         let removeButton = document.createElement("button");
@@ -36,17 +43,32 @@ async function renderJobs() {
         removeButton.setAttribute("id", job.id)
         removeButton.classList.add('delete')
 
+        let editButton = document.createElement("button");
+        editButton.addEventListener("click", editJob);
+        editButton.textContent = "EDIT";
+        editButton.classList.add('edit')
+
+        let img = document.createElement("img");
+        img.src = "/edit_black_36dp.svg";
+        editButton.appendChild(img)
+
         jobBlock1.value = `${job.title}`
-        jobBlock2.textContent = `${job.companyName}`
-        jobBlock3.textContent = `${job.salary}`
-        jobBlock4.textContent = `${job.description}`
-        document.body.appendChild(jobBlock1);
-        document.body.appendChild(jobBlock2);
-        document.body.appendChild(jobBlock3);
-        document.body.appendChild(jobBlock4);
-        document.body.appendChild(removeButton);
+        jobBlock2.value = `${job.companyName}`
+        jobBlock3.value = `${job.salary}`
+        jobBlock4.value = `${job.description}`
+        document.body.appendChild(jobContainer);
+        jobContainer.appendChild(jobBlock1);
+        jobContainer.appendChild(jobBlock2);
+        jobContainer.appendChild(jobBlock3);
+        jobContainer.appendChild(jobBlock4);
+        jobContainer.appendChild(removeButton);
+        jobContainer.appendChild(editButton);
+        
     })
 }
+
+
+
 
 async function createJob() {
     let job = {
@@ -65,7 +87,9 @@ async function createJob() {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(job)
-    });
+        
+    })
+    location.reload();
 
 
 
@@ -80,39 +104,44 @@ async function removeJob() {
     let response = await fetch(`https://61293a58068adf001789b83c.mockapi.io/api/jobs/${this.id}`, {
         method: 'DELETE',
     });
+    location.reload();
     let result = await response.json();
     return result
 }
 
-const jobsData = fetch("https://61293a58068adf001789b83c.mockapi.io/api/jobs");
-console.log(jobsData)
-let oldJobs = jobsData;
 
-document.getElementsByTagName('input').forEach(item => {
-    item.addEventListener('input', event => {
 
-        let updatedJobs = oldJobs.reduce((acc, job) => {
 
-            return [...acc, +event.target.id === job.id ? {
-                ...job,
-                name: event.target.value
 
-            } : job]
+async function editJob (){
+    const jobsData = await fetch("https://61293a58068adf001789b83c.mockapi.io/api/jobs");
+    console.log(jobsData)
+    let jobs = await jobsData.json();
+    let currentJob = this.parentNode.id;
 
-        }, [])
-        jobs = updatedJobs;
+    let firstElement = this.parentNode.firstChild;
+    let secondElement = firstElement.nextElementSibling;
+    let thirdElement = secondElement.nextElementSibling;
+    
 
-    })
-    fetch(`https://61293a58068adf001789b83c.mockapi.io/api/jobs/${this.id}`, {
-        method: "PATCH",
+    let newValue = this.parentNode.firstChild.value;
+     let newCompany = firstElement.nextElementSibling.value;
+     let newSalary = secondElement.nextElementSibling.value;
+     let newDescription = thirdElement.nextElementSibling.value;
+     
+    
+
+    let response = await fetch(`https://61293a58068adf001789b83c.mockapi.io/api/jobs/${currentJob}`, {
+        method: "PUT",
         headers: {
-            "content-type": "application/json"
+            'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify({
-            done: updatedJobs
-        })
-    })
-})
+        body: JSON.stringify({title : newValue, companyName : newCompany, salary: newSalary, description: newDescription})
+    });
 
+    
+    jobs = jobs.map((job) => job.id === currentJob ? {id: job.id, title: newValue, companyName: newCompany, salary: newSalary, description: newDescription} : job );
+    
+    location.reload();
+}
 
-//  
