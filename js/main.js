@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
     renderJobs();
-    document.getElementById("add").addEventListener("click", createJob)
+    document.getElementById("add").addEventListener("click", Openform)
+    document.getElementById("submit").addEventListener("click", createJob)
 });
 
-
+function Openform()
+{
+document.getElementById("mainForm").classList.remove("firstStyle");
+document.getElementById("mainForm").classList.add("form");
+document.getElementById("add").style.display = "none";
+}
 let nameInput = document.getElementById("name-input");
 let companyInput = document.getElementById("company-input");
 let descriptionInput = document.getElementById("description-input");
@@ -31,10 +37,7 @@ async function renderJobs() {
         jobBlock2.classList.add('block');
         jobBlock3.classList.add('block');
         jobBlock4.classList.add('block');
-        // jobBlock1.setAttribute("id", job.title)
-        // jobBlock2.setAttribute("id", job.companyName)
-        // jobBlock3.setAttribute("id", job.description)
-        // jobBlock4.setAttribute("id", job.salary)
+        
 
 
         let removeButton = document.createElement("button");
@@ -75,7 +78,7 @@ async function createJob() {
         title: nameInput.value,
         companyName: companyInput.value,
         description: descriptionInput.value,
-        salary: salaryInput.value,
+        salary: salaryInput.value + " $",
     };
 
 
